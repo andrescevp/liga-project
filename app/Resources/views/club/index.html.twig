@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Club list</h1>
+
+            <ul class="list-group">
+
+                {% for club in clubs %}
+                    <li class="list-group-item">
+                        {% if club.active == true %}
+                            {#@todo something to show?#}
+                        {% else %}
+                            <span class="badge"><span class="glyphicon glyphicon-warning-sign"></span> Not active</span>
+                        {% endif %}
+                        <a href="{{ path('club_show', { 'id': club.id }) }}" class="badge">Show</a>
+                        <a href="{{ path('club_edit', { 'id': club.id }) }}" class="badge">Edit</a>
+                        {{ club.name }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <a href="{{ path('club_new') }}" class="btn btn-info">Create a new player</a>
+        </div>
+    </div>
+{% endblock %}

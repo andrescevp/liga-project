@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ player.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ player.name }}</td>
+                </tr>
+                <tr>
+                    <th>Club</th>
+                    <td>{{ player.club.name }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ path('player_index') }}" class="btn btn-default">Back to the list</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ path('player_edit', { 'id': player.id }) }}" class="btn btn-warning">Edit</a>
+        </div>
+        <div class="col-md-4">
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-danger">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

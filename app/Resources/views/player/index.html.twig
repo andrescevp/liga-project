@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Players list</h1>
+
+            <ul class="list-group">
+
+                {% for player in players %}
+                    <li class="list-group-item">
+                        <a href="{{ path('player_show', { 'id': player.id }) }}" class="badge">Show</a>
+                        <a href="{{ path('player_edit', { 'id': player.id }) }}" class="badge">Edit</a>
+                        {{ player.name }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <a href="{{ path('player_new') }}" class="btn btn-info">Create a new player</a>
+        </div>
+    </div>
+{% endblock %}
